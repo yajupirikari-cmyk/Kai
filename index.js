@@ -77,7 +77,7 @@ async function callKuraAI(prompt) {
       429: 'レート制限(1分間20回)に達しました。しばらく待ってから再度お試しください。',
       500: 'すべてのAIプロバイダーで応答に失敗しました。しばらくしてから再度お試しください。',
     };
-    const message = errorMessages[response.status] || `不明なエラーが発生しました (HTTP ${response.status})`;
+    const message = errorMessages[response.status] || `不明なエラーが発生しました (HTTP ${response.status})。URL: ${KURA_ENDPOINT}`;
     const err = new Error(message);
     err.status = response.status;
     throw err;
@@ -114,7 +114,7 @@ client.on(Events.InteractionCreate, async interaction => {
   } catch (error) {
     console.error('Kura AI 呼び出しエラー:', error);
     const message = error.message || '不明なエラーが発生しました。';
-    await interaction.editReply(`⚠️ エラー: ${message}`);
+    await interaction.editReply(`エラー: ${message}`);
   }
 });
 
