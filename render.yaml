@@ -10,8 +10,6 @@ services:
         sync: false
       - key: DISCORD_CLIENT_ID
         sync: false
-      - key: DISCORD_GUILD_ID
-        sync: false
       - key: KURA_API_KEY
         sync: false
       - key: KURA_API_BASE_URL

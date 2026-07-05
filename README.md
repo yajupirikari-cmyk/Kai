@@ -27,20 +27,17 @@ cp .env.example .env
 ```
 DISCORD_TOKEN=あなたのBotトークン
 DISCORD_CLIENT_ID=あなたのApplication ID
-DISCORD_GUILD_ID=(任意・テスト用に特定サーバーIDを入れると反映が早い)
 KURA_API_KEY=kura_xxxxxxxxxxxxxxxxxxxx
-KURA_API_BASE_URL=https://（Kura AIのAPIが動いているドメイン）
+KURA_API_BASE_URL=https://kuraai.runable.site/
 ```
 
-⚠️ **`KURA_API_BASE_URL` について**: 今回いただいた情報には `/api/v1/ai` というパスは書かれていましたが、ホスト名(ドメイン)の記載がありませんでした。Kura AIの管理画面やドキュメントに記載されているAPIのベースURL(例: `https://kura-ai.example.com` のような部分)を確認して設定してください。
-
-⚠️ **APIキーについて**: 今回チャットで共有していただいたキーは、念のため一度削除して新しく発行し直すことをおすすめします。`.env` ファイルは他人と共有したり、Gitにコミットしたりしないでください(`.gitignore` に追加推奨)。
+⚠️ **APIキーについて**: `KURA_API_KEY` には Kura AI の管理画面で発行した API キーを設定してください。`.env` ファイルは他人と共有したり、Gitにコミットしたりしないでください(`.gitignore` に追加推奨)。
 
 ### 4. スラッシュコマンドの登録
 ```bash
 npm run deploy
 ```
-`DISCORD_GUILD_ID` を指定していれば数秒で、指定していない場合はグローバル反映のため最大1時間ほどで各サーバーに `/kura_ai` コマンドが表示されます。
+実行するとグローバルコマンドとして登録されます。Discord側の仕様により、各サーバーに `/kura_ai` コマンドが表示されるまでに最大1時間程度かかる場合があります。
 
 ### 5. Bot の起動
 ```bash
@@ -72,7 +69,6 @@ Discord上で以下のように入力します。
 6. 以下の環境変数（Environment Variables）の入力を求められるので、値を設定します。
    - `DISCORD_TOKEN`: あなたのDiscord Botトークン
    - `DISCORD_CLIENT_ID`: DiscordのApplication ID
-   - `DISCORD_GUILD_ID`: (任意・特定サーバー用)
    - `KURA_API_KEY`: Kura AIのAPIキー
    - `KURA_API_BASE_URL`: デフォルトで `https://kuraai.runable.site/` が設定されていますが、変更が必要な場合は上書きしてください。
 7. **「Apply」** をクリックするとビルドおよびデプロイが開始され、完了すると Discord Bot が常時稼働します。
