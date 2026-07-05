@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: kura-discord-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_GUILD_ID
+        sync: false
+      - key: KURA_API_KEY
+        sync: false
+      - key: KURA_API_BASE_URL
+        value: https://kuraai.runable.site/
