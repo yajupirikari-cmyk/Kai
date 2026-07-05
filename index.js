@@ -1,6 +1,10 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits, Events, MessageFlags } = require('discord.js');
 const fetch = require('node-fetch');
+const deployCommands = require('./deploy-commands');
+
+// 起動時にスラッシュコマンドを自動で登録
+deployCommands();
 
 const {
   DISCORD_TOKEN,
